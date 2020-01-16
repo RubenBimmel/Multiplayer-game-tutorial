@@ -11,7 +11,15 @@ server.listen(port, function(){
 });
 
 app.get('/', function (req, res) {
-  res.sendFile('index.html', { root: __dirname })
+  res.sendFile('index.html', { root: __dirname + '/src' })
 });
 
-app.use(express.static('public'));
+app.get('/game', function (req, res) {
+  res.sendFile('game.html', { root: __dirname + '/src' })
+});
+
+app.get('/controller', function (req, res) {
+  res.sendFile('controller.html', { root: __dirname + '/src' })
+});
+
+app.use(express.static('src/public'));
