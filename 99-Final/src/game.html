@@ -10,11 +10,11 @@
 </head>
 
 <body>
-    <h1 id="room">0000</h1>
-    <table class="grid">
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-        <tr><td></td><td></td><td></td></tr>
-    </table>
+    <div id="header">
+        <p>Current bid:</p><p>0 x </p><img src="svg/nodice.svg"><p>by</p><p id="player-name"></p id="player-name">
+        <p id="room">0000</p>
+    </div>
+    <div id="cups"></div> <!--Class for >15 players: small, Class for >48 players: smaller, Max players: 98-->
+    <script src="js/game.js"></script>
 </body>
 </html>

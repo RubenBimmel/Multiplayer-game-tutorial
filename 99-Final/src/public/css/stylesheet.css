@@ -6,7 +6,11 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    padding: 1px 20px 20px;
+    background-color: #eee;
+}
+
+.center-div {
+    padding: 1px 12px 20px;
     margin: 0 auto;
     max-width: 400px;
     left: 0;
@@ -23,6 +27,7 @@ button {
     border-style: outset;
     padding: 5px;
     background-color: #eee;
+    min-width: 120px;
 }
 
 button:hover, background:active {
@@ -38,18 +43,111 @@ button:focus {
 }
 
 /*
+ * Index
+ */
+
+.form-table {
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.form-table td {
+    padding: 5px;
+}
+
+.form-table td:first-child {
+    width: 20%;
+}
+
+.form-table td:last-child {
+    width: 80%;
+}
+
+.form-table input {
+    width: 100%;
+}
+
+/*
+ * Game
+ */
+
+#header {
+    position: absolute;
+    width: 100vw;
+    height: 60px;
+    top: 0;
+    left: 0;
+    background-color: black;
+    color: white;
+}
+
+#header p, #header img {
+    font-size: 23px;
+    float: left;
+    height: 30px;
+    margin: 15px 10px;
+}
+
+#header p:first-child {
+    margin-left: 30px;
+}
+
+#header #room {
+    float: right;
+    margin: 5px 30px;
+    font-size: 40px;
+    font-weight: bold;;
+}
+
+#cups {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#cups .cup {
+    position: relative;
+    width: 7.5vw;
+    height: 7.5vw;
+    margin: 0 5vw;
+    background: url("../svg/cup.svg");
+    font-size: 80px;
+    line-height: 7.5vw;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    filter: invert(1) brightness(0.5) invert(1) sepia(5) contrast(1.5) saturate(200);
+}
+
+#cups.small .cup {
+    margin: 0 2vw;
+}
+
+#cups.smaller .cup {
+    width: 5vw;
+    height: 5vw;
+    margin: 0 1vw;
+}
+
+/*
  * Controller
  */
 
- .controller {
-     background-color: #eee;
- }
-
- #ui {
+.panel {
      background-color: white;
-     margin: -10px;
+     margin: -10px -10px 20px;
      padding: 10px;
      border-radius: 8px;
+ }
+
+ .panel H2 {
+     margin-top: 0;
  }
 
  #dice-ui {

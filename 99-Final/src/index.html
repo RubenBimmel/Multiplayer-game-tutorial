@@ -10,10 +10,21 @@
 </head>
 
 <body>
-    <h1>Liar's dice</h1>
-    <h2>Join game</h2>
-    <button onclick="location.href += 'controller'">Join game</button>
-    <h2>Host game</h2>
-    <button onclick="location.href += 'game'">Host game</button>
+    <div class="center-div">
+        <h1>Liar's dice</h1>
+        <div class="panel">
+            <h2>Join game</h2>
+            <table class="form-table">
+            <tr><td>Name:</td><td><input id="name" type="text"></td></tr>
+            <tr><td>Room:</td><td><input id="room" type="text"></td></tr>
+            </table>
+            <button onclick="location.href += 'controller'">Join</button>
+        </div>
+        <div class="panel">
+            <h2>Host game</h2>
+            <button onclick="location.href += 'game'">Host</button>
+        </div>
+    </div>
 </body>
+
 </html>
