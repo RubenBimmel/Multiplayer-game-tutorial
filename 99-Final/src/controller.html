@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Liar's dice - Controller</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body class="controller">
+    <h1>Liar's dice</h1>
+    <h2 id="player-name">Player name</h2>
+
+    <div id="ui">
+        <div id="dice-ui">
+            <img src="svg/dice1.svg"><img src="svg/dice2.svg"><img src="svg/dice3.svg"><img src="svg/dice4.svg"><img src="svg/dice5.svg">
+            <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
+        </div>
+
+        <div id="bid-ui">
+            <div id="bid-quantity" class="input-spinner">
+                <div class="spinner-button spinner-up" onclick="changeQuantity(1)"></div>
+                <input class="spinner-value" type="number" value="0" onchange="setQuantity(this.value)">
+                <div class="spinner-button spinner-down" onclick="changeQuantity(-1)"></div>
+            </div>
+
+            <div id="bid-face" class="input-spinner">
+                <div class="spinner-button spinner-up" onclick="changeFace(1)"></div>
+                <img class="spinner-value" src="svg/dice1.svg">
+                <div class="spinner-button spinner-down" onclick="changeFace(-1)"></div>
+            </div>
+
+            <button id="challenge-button" onclick="challengeBid()">Challenge</button>
+            <button id="Confirm-button" onclick="confirmBid()">Confirm</button>
+        </div>
+    </div>
+
+    <script src="js/controller.js"></script>
+</body>
+</html>

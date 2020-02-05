@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+/*
+ * Global
+ */
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    padding: 1px 20px 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    left: 0;
+    right: 0;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: outset;
+    padding: 5px;
+    background-color: #eee;
+}
+
+button:hover, background:active {
+    background-color: #f5f5f5;
+}
+
+button:active {
+    border-width: 1.5px;
+}
+
+button:focus {
+    outline: none;
+}
+
+/*
+ * Controller
+ */
+
+ .controller {
+     background-color: #eee;
+ }
+
+ #ui {
+     background-color: white;
+     margin: -10px;
+     padding: 10px;
+     border-radius: 8px;
+ }
+
+ #dice-ui {
+     display: flex;
+     flex-wrap: wrap;
+     margin-bottom: 35px;
+ }
+
+ #dice-ui img {
+     width: 70px;
+     margin: 2px;
+ }
+
+ @media only screen and (max-device-width: 335px) {
+    #dice-ui img {
+        width: 52px;
+    }
+ }
+
+ #bid-ui {
+     margin: 0 auto;
+     left: 0;
+     right: 0;
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     flex-wrap: wrap;
+     width: 300px;
+     height: 210px;
+     padding: 15px 0 5px;
+ }
+
+ #bid-ui button {
+     width: 140px;
+     font-size: 20px;
+     align-self: flex-end;
+ }
+
+/*
+ * Input Spinner
+ */
+
+.input-spinner {
+    width: 80px;
+    height: 151px;
+    margin: 0 20px;
+}
+
+.spinner-button {
+    display: block;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 0;
+	height: 0;
+    cursor: pointer;
+    border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+}
+
+.spinner-up {
+    border-bottom: 25px solid #888;
+}
+
+.spinner-up:hover {
+    border-bottom: 25px solid #999;
+}
+
+.spinner-down {
+    border-top: 25px solid #888;
+}
+
+.spinner-down:hover {
+    border-top: 25px solid #999;
+}
+
+.spinner-value {
+    width: 75px;
+    height: 75px;
+    margin: 10px 0;
+}
+
+input.spinner-value {
+    width: 71px;
+    height: 71px;
+    margin: 10px 0 14px;
+    padding: 0;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 60px;
+    -moz-appearance:textfield;
+}
+
+input.spinner-value::-webkit-outer-spin-button,
+input.spinner-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
