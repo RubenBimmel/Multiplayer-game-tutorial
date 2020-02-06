@@ -12,7 +12,7 @@ body {
 .center-div {
     padding: 1px 12px 20px;
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 370px;
     left: 0;
     right: 0;
 }
@@ -30,7 +30,7 @@ button {
     min-width: 120px;
 }
 
-button:hover, background:active {
+button:hover, button:active {
     background-color: #f5f5f5;
 }
 
@@ -71,32 +71,45 @@ button:focus {
  * Game
  */
 
-#header {
+#game-ui {
     position: absolute;
     width: 100vw;
-    height: 60px;
+    height: 100vh;
     top: 0;
     left: 0;
-    background-color: black;
-    color: white;
+    display: flex;
 }
 
-#header p, #header img {
-    font-size: 23px;
-    float: left;
-    height: 30px;
-    margin: 15px 10px;
+#game-bid-ui {
+    flex-grow: 1;
+    max-width: 300px;
+    margin: 20px;
 }
 
-#header p:first-child {
-    margin-left: 30px;
+#game-bid-ui .panel {
+    margin: 0 0 20px;
 }
 
-#header #room {
-    float: right;
-    margin: 5px 30px;
-    font-size: 40px;
-    font-weight: bold;;
+#player-panel {
+    flex-grow: 1;
+    margin: 20px;
+    margin-left: 0;
+}
+
+#current-bid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: #666;
+}
+
+#current-bid div {
+    margin-right: 30px;
+}
+
+#face {
+    width: 80px;
 }
 
 #cups {
@@ -122,10 +135,10 @@ button:focus {
     font-weight: bold;
     text-align: center;
     color: white;
-    filter: invert(1) brightness(0.5) invert(1) sepia(5) contrast(1.5) saturate(200);
+    /*filter: invert(1) brightness(0.5) invert(1) sepia(5) contrast(1.5) saturate(200);*/
 }
 
-#cups.small .cup {
+/*#cups.small .cup {
     margin: 0 2vw;
 }
 
@@ -133,58 +146,84 @@ button:focus {
     width: 5vw;
     height: 5vw;
     margin: 0 1vw;
-}
+}*/
 
 /*
  * Controller
  */
 
 .panel {
-     background-color: white;
-     margin: -10px -10px 20px;
-     padding: 10px;
-     border-radius: 8px;
- }
+    background-color: white;
+    margin: -10px -10px 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
 
- .panel H2 {
-     margin-top: 0;
- }
+.panel H2 {
+    margin-top: 0;
+}
 
- #dice-ui {
-     display: flex;
-     flex-wrap: wrap;
-     margin-bottom: 35px;
- }
+#dice {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 35px;
+}
 
- #dice-ui img {
-     width: 70px;
-     margin: 2px;
- }
+#dice img {
+    width: 70px;
+    margin: 2px;
+}
 
- @media only screen and (max-device-width: 335px) {
-    #dice-ui img {
-        width: 52px;
-    }
- }
+@media only screen and (max-device-width: 335px) {
+#dice img {
+    width: 52px;
+}
+}
 
- #bid-ui {
-     margin: 0 auto;
-     left: 0;
-     right: 0;
-     display: flex;
-     justify-content: space-evenly;
-     align-items: center;
-     flex-wrap: wrap;
-     width: 300px;
-     height: 210px;
-     padding: 15px 0 5px;
- }
+#bid-ui {
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 210px;
+    padding: 13px 0 3px;
+    border-radius: 8px;
+    border: 2px solid white;
+}
 
- #bid-ui button {
-     width: 140px;
-     font-size: 20px;
-     align-self: flex-end;
- }
+#bid-ui.active {
+    border-color: #8e6;
+}
+
+#bid-ui button {
+    width: 140px;
+    font-size: 20px;
+    align-self: flex-end;
+}
+
+#challenge-button {
+    background-color: #f66;
+}
+
+#challenge-button:hover, #challenge-button:active {
+    background-color: #f88;
+}
+
+#confirm-button.enabled {
+    background-color: #6f6;
+}
+
+#confirm-button.enabled:hover, #confirm-button.enabled:active {
+    background-color: #8f8;
+}
+
+.disabled #challenge-button, .open #challenge-button, .active #challenge-button, .disabled #confirm-button, #confirm-button.disabled {
+    background-color: #aaa;
+}
 
 /*
  * Input Spinner

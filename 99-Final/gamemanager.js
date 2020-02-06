@@ -1,24 +1,64 @@
 class Gamestate {
-    constructor() {
-        this.board = [];
+    constructor(id, room) {
+        this.id = id;
+        this.room = room;
         this.players = [];
-        this.activePlayer = 0;
+        this.removedPlayers = [];
+        this.currentBid = null;
+        this.state = "bidding";
     }
 
     addPlayer(socket) {
-        var id = this.players.length;
-        this.players.push(socket);
+        var player = {
+            id: this.players.length + this.removedPlayers.length,
+            socket: this.socket,
+            dice: [Math.ceil(Math.random() * 5), Math.ceil(Math.random() * 5), Math.ceil(Math.random() * 5), Math.ceil(Math.random() * 5), Math.ceil(Math.random() * 5)]
+        }
 
-        socket.emit('init', {id: id, board: this.board});
+        this.players.push(player);
 
-        socket.on('mark', (position) => this.mark(position, id));
+        socket.on('raise', (bid) => this.raise(player.id, bid));
+        socket.on('challenge', () => this.challenge(player.id));
+        socket.on('disconnect', () => this.removePlayer(player.id));
+
+        socket.emit('id', player.id);
+        socket.emit('dice', player.dice);
+        socket.emit('state', this.state);
+
+        this.room.emit('players', this.players);
     }
 
-    mark(position, id) {
-        this.board[position] = id;
-        this.players[id].emit('marked', {position: position, id: id});
-        this.players[id].broadcast.emit('marked', {position: position, id: id});
+    removePlayer(id) {
+        var idx = this.players.indexOf(p => p.id === id);
+        this.removedPlayers.push(this.players[idx]);
+        this.players.splice(idx, 1);
+
+        this.room.emit('players', this.players);
+    }
+
+    raise(playerID, bid) {
+        if (this.state != "bidding" || bid == null) return;
+
+        if (this.currentBid != null) {
+            if (this.currentBid.face > bid.face) return;
+            if (this.currentBid.face == bid.face && this.currentBid.quantity >= bid.quantity) return;
+            if (this.currentBid.face < bid.face && this.currentBid.quantity > bid.quantity) return;
+        }
+
+        this.currentBid = bid;
+        this.currentBid.player = playerID;
+
+        this.room.emit('bid', this.currentBid);
+    }
+
+    challenge(playerID) {
+        if (this.currentBid == null || this.currentBid.player == playerID) return;
+
+        this.state = "challenge";
+        this.room.emit('state', this.state);
     }
 }
 
-module.exports = (io) => new Gamestate();
+module.exports = function(io) {
+    return new Gamestate("0000", io);
+}

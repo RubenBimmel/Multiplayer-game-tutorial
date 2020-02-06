@@ -7,14 +7,39 @@
 
     <title>Liar's dice</title>
     <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
-    <div id="header">
-        <p>Current bid:</p><p>0 x </p><img src="svg/nodice.svg"><p>by</p><p id="player-name"></p id="player-name">
-        <p id="room">0000</p>
+    <h1></h1>
+    <div id="game-ui">
+        <div id="game-bid-ui">
+            <div class="panel">
+                <h2>Time left</h2>
+                <p>10</p>
+            </div>
+
+            <div class="panel">
+                <h2>Current bid</h2>
+
+                <div id="current-bid">
+                    <div id="quantity">0</div><div>x</div><img id="face" src="svg/nodice.svg">
+                </div>
+                
+                <p id="player">Player name</p>
+            </div>
+            
+            <div class="panel">
+                <h2>Challenger</h2>
+                <p id="challeger">Player name</p>
+            </div>
+        </div>
+
+        <div id="player-panel" class="panel">
+            <div id="cups"></div>
+        </div>
     </div>
-    <div id="cups"></div> <!--Class for >15 players: small, Class for >48 players: smaller, Max players: 98-->
+    
     <script src="js/game.js"></script>
 </body>
 </html>

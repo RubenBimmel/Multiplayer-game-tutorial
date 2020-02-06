@@ -34,5 +34,7 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
-  gamemanager.addPlayer(socket);
+  socket.on('join', function() {
+    gamemanager.addPlayer(socket);
+  });
 });

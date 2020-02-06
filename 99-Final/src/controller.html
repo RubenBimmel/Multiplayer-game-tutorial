@@ -16,15 +16,15 @@
         <h2 id="player-name">Player name</h2>
 
         <div class="panel">
-            <div id="dice-ui">
-                <img src="svg/dice1.svg"><img src="svg/dice2.svg"><img src="svg/dice3.svg"><img src="svg/dice4.svg"><img src="svg/dice5.svg">
+            <div id="dice">
+                <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
                 <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
             </div>
 
             <div id="bid-ui">
                 <div id="bid-quantity" class="input-spinner">
                     <div class="spinner-button spinner-up" onclick="changeQuantity(1)"></div>
-                    <input class="spinner-value" type="number" value="0" onchange="setQuantity(this.value)">
+                    <input class="spinner-value" type="number" value="1" onchange="setQuantity(this.value)">
                     <div class="spinner-button spinner-down" onclick="changeQuantity(-1)"></div>
                 </div>
 
@@ -35,7 +35,7 @@
                 </div>
 
                 <button id="challenge-button" onclick="challengeBid()">Challenge</button>
-                <button id="Confirm-button" onclick="confirmBid()">Bid</button>
+                <button id="confirm-button" onclick="confirmBid()">Bid</button>
             </div>
         </div>
     </div>
