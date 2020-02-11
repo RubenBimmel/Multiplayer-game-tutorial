@@ -37,4 +37,8 @@ io.on('connection', function(socket){
   socket.on('join', function() {
     gamemanager.addPlayer(socket);
   });
+
+  socket.on('host', function() {
+    gamemanager.addHost(socket);
+  });
 });

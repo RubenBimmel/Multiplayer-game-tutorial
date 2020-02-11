@@ -5,38 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>Liar's dice - Controller</title>
+    <title>Poker dice - Controller</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
     <div class="center-div">
-        <h1>Liar's dice</h1>
+        <h1>Poker dice</h1>
         <h2 id="player-name">Player name</h2>
 
-        <div class="panel">
+        <div id="game-panel" class="panel">
+            <div id="money"></div>
             <div id="dice">
                 <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
-                <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
             </div>
 
-            <div id="bid-ui">
-                <div id="bid-quantity" class="input-spinner">
-                    <div class="spinner-button spinner-up" onclick="changeQuantity(1)"></div>
-                    <input class="spinner-value" type="number" value="1" onchange="setQuantity(this.value)">
-                    <div class="spinner-button spinner-down" onclick="changeQuantity(-1)"></div>
-                </div>
-
-                <div id="bid-face" class="input-spinner">
-                    <div class="spinner-button spinner-up" onclick="changeFace(1)"></div>
-                    <img class="spinner-value" src="svg/dice1.svg">
-                    <div class="spinner-button spinner-down" onclick="changeFace(-1)"></div>
-                </div>
-
-                <button id="challenge-button" onclick="challengeBid()">Challenge</button>
-                <button id="confirm-button" onclick="confirmBid()">Bid</button>
+            <div id="bet-ui">
+                <div id="bet"></div>
+                <button id="fold-button" onclick="fold()">Fold</button>
+                <button id="call-button" onclick="call()">Call</button>
+                <button id="raise-button" onclick="raise()">Raise</button>
             </div>
+        </div>
+
+        <div id="ready-panel" class="panel">
+            <button id="ready-button" onclick="setReady()">Ready</button>
         </div>
     </div>
 

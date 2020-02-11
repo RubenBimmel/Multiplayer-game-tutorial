@@ -5,38 +5,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>Liar's dice</title>
+    <title>Poker dice</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
-    <h1></h1>
     <div id="game-ui">
-        <div id="game-bid-ui">
-            <div class="panel">
-                <h2>Time left</h2>
-                <p>10</p>
+        <div id="game-bet-ui">
+            <div id="room-panel" class="panel">
+                <h1>Poker dice</h1>
+                <p id="room">0000</p>
             </div>
 
             <div class="panel">
-                <h2>Current bid</h2>
+                <h2>Current bet</h2>
+                <p id="current-bet"></p>
+            </div>
 
-                <div id="current-bid">
-                    <div id="quantity">0</div><div>x</div><img id="face" src="svg/nodice.svg">
+            <div class="panel">
+                <h2>Winner</h2>
+                <p id="name"></p>
+                <div id="dice">
+                    <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
                 </div>
-                
-                <p id="player">Player name</p>
-            </div>
-            
-            <div class="panel">
-                <h2>Challenger</h2>
-                <p id="challeger">Player name</p>
             </div>
         </div>
 
         <div id="player-panel" class="panel">
-            <div id="cups"></div>
+            <div id="players">
+            </div>
         </div>
     </div>
     
