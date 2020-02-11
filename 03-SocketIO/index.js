@@ -33,7 +33,7 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
-  socket.on('mark', function(position) {
-    console.log(position);
+  socket.on('hand', function(hand) {
+    console.log(hand);
   });
 });
