@@ -1,10 +1,9 @@
+const playerPanel = document.getElementById("player-panel");
+const rockValue = document.getElementById("rock-value");
+const paperValue = document.getElementById("paper-value");
+const scissorsValue = document.getElementById("scissors-value");
+
 var socket = io();
-
-const currentBet = document.getElementById("current-bet");
-const winnerName = document.getElementById("name");
-const winnerDice = document.getElementById("dice").getElementsByTagName('img');
-const playerPanel = document.getElementById("players");
-
 var players = [];
 
 socket.on('id', function(id) {
@@ -19,45 +18,35 @@ socket.on('addPlayer', function(p) {
     name.innerText = p.name;
     player.appendChild(name);
 
-    var money = document.createElement('p');
-    money.classList = "money";
-    money.innerText = p.money;
-    player.appendChild(money);
-
-    var bet = document.createElement('p');
-    bet.classList = "bet";
-    bet.innerText = p.bet;
-    player.appendChild(bet);
-
     playerPanel.appendChild(player);
 
-    players.push({id: p.socket, player: player, money: money, bet: bet});
+    players.push({id: p.socket, player: player});
 });
 
 socket.on('removePlayer', function(player) {
-    var result = players.find(p => p.id = player.socket);
-    playerPanel.removeChild(result);
+    var result = players.find(p => p.id == player.socket);
+    playerPanel.removeChild(result.player);
 });
 
-socket.on('raise', function(value) {
-    currentBet.innerText = value;
-});
+socket.on('results', function(results) {
+    rockValue.innerText = results.sum.rock;
+    paperValue.innerText = results.sum.paper;
+    scissorsValue.innerText = results.sum.scissors;
 
-socket.on('bets', function(data) {
-    console.log(data);
-    data.forEach(player => {
-        var result = players.find(p => p.id == player.socket);
-        result.money.innerText = player.money;
-        result.bet.innerText = player.bet;
+    results.players.forEach(player => {
+        players.find(p => p.id == player.socket).player.classList.add(player.hand);
     });
 });
 
-socket.on('winner', function(winner) {
-    winnerName.innerText = winner.name;
-    for (let i = 0; i < 5; i++) {
-        if (i < winner.dice.length) winnerDice[i].src = `svg/dice${winner.dice[i]}.svg`;
-        else winnerDice[i].src = `svg/nodice.svg`;
-    }
+socket.on('resetHand', function() {
+    rockValue.innerText = paperValue.innerText = scissorsValue.innerText = "";
+    players.forEach(p => {
+        p.player.classList = 'player';
+    })
 });
+
+socket.on('active', function(id) {
+    players.find(p => p.id == id).player.classList.add('active');
+})
 
 socket.emit('host');

@@ -1,56 +1,57 @@
+const readyButton = document.getElementById("ready");
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
 var socket = io();
-
-const readyButton = document.getElementById("ready-button");
-const readyPanel = document.getElementById("ready-panel");
-const gamePanel = document.getElementById("game-panel");
-const money = document.getElementById("money");
-const bet = document.getElementById("bet");
-const diceImages = document.getElementById("dice").getElementsByTagName("img");
-
 var ready = false;
+var hand, state;
 
-function setReady() {
+readyButton.onclick = function() {
     ready = !ready;
     socket.emit('ready', ready);
     readyButton.classList = ready ? 'ready' : null;
 }
 
-function fold() {
-    socket.emit('fold');
+rockButton.onclick = function() {
+    if (state != 'choose') return;
+    hand = "rock";
+    rockButton.classList = 'selected';
+    paperButton.classList = scissorsButton.classList = 'none';
+    socket.emit('hand', "rock");
 }
 
-function call() {
-    socket.emit('call');
+paperButton.onclick = function() {
+    if (state != 'choose') return;
+    hand = "paper";
+    paperButton.classList = 'selected';
+    rockButton.classList = scissorsButton.classList = 'none';
+    socket.emit('hand', "paper");
 }
 
-function raise() {
-    socket.emit('raise');
+scissorsButton.onclick = function() {
+    if (state != 'choose') return;
+    hand = "scissors";
+    scissorsButton.classList = 'selected';
+    rockButton.classList = paperButton.classList = 'none';
+    socket.emit('hand', "scissors");
 }
 
-socket.on('info', (p) => {
-    playerID = p.id;
-    document.getElementById("player-name").innerText = p.name;
-})
+socket.on('state', function(s) {
+    state = s;
 
-socket.on('dice', (dice) => {
-    for (let i = 0; i < 5; i++) {
-        if (i < dice.length) diceImages[i].src = `svg/dice${dice[i]}.svg`;
-        else diceImages[i].src = `svg/nodice.svg`;
+    if (state == "lobby") {
+        readyButton.style.display = 'block';
+        readyButton.classList = null;
+        ready = false;
+    } else {
+        readyButton.style.display = 'none';
     }
-})
-
-socket.on('state', function(state) {
-    readyPanel.style.display = state == "lobby" ? "block" : "none";
-    gamePanel.style.display = state == "lobby" ? "none" : "block";
 });
 
-socket.on('money', function(m) {
-    money.innerText = `$ ${m}`;
-});
-
-socket.on('bet', function(b) {
-    bet.innerText = `$ ${b.bet}`;
-    bet.classList = b.state;
+socket.on('resetHand', function() {
+    hand = null;
+    rockButton.classList = paperButton.classList = scissorsButton.classList = 'none';
 });
 
 socket.emit('join');

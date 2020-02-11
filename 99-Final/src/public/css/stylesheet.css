@@ -80,17 +80,17 @@ button:focus {
     display: flex;
 }
 
-#game-bet-ui {
+#game-panel {
     flex: 0 0 300px;
     margin: 20px;
 }
 
-#game-bet-ui h1 {
+#game-panel h1 {
     text-align: center;
     margin: 0;
 }
 
-#game-bet-ui #room {
+#game-panel #room {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
@@ -98,75 +98,53 @@ button:focus {
     margin: 5px 0;
 }
 
-#game-bet-ui p {
+#game-panel p {
     font-size: 25px;
     margin: 10px 0;
 }
 
-#game-bet-ui .panel {
+#game-panel .panel {
     margin: 0 0 20px;
 }
 
-#game-bet-ui #current-bet {
-    display: block;
-    height: 62.5px;
-    text-align: center;
-    font-size: 50px;
-    color: #444;
-}
-
-#game-bet-ui #name {
-    height: 31.5px;
-    display: block;
+#results {
+    font-size: 1.4em;
+    width: 60%;
 }
 
 #player-panel {
+    display: flex;
     flex-grow: 1;
     margin: 20px;
     margin-left: 0;
 }
 
-/*#cups {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-#cups .cup {
+.player {
     position: relative;
-    width: 7.5vw;
-    height: 7.5vw;
-    margin: 0 5vw;
-    background: url("../svg/cup.svg");
+    width: 200px;
+    height: 200px;
+    background-image: url("../svg/rock.svg");
+    opacity: .4;
 }
 
-.cup div {
+.player.active {
+    opacity: 1;
+}
+
+.player.paper {
+    background-image: url("../svg/paper.svg");
+}
+
+.player.scissors {
+    background-image: url("../svg/scissors.svg");
+}
+
+.player h2 {
     position: absolute;
     width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-.cup .money {
-    font-size: 50px;
-    line-height: 7.5vw;
-    font-weight: bold;
+    bottom: -20px;
     text-align: center;
-    color: green;
 }
-
-.cup .name {
-    text-align: center;
-    white-space: nowrap;
-    width: 444px;
-    font-size: 30px;
-    top: 150px;
-    left: -150px;
-}*/
 
 /*
  * Controller
@@ -183,76 +161,46 @@ button:focus {
     margin-top: 0;
 }
 
-#ready-button.ready {
-    background-color: #6f6;
+#game-panel {
+    position: relative;
+    min-height: 260px;
 }
 
-#money {
-    display: block;
-    width: 100%;
-    height: 62.5px;
-    margin: 10px 0;
-    font-size: 50px;
+#ready {
+    width: 95%;
+    position: absolute;
+    bottom: 10px;
 }
 
-#dice {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
-}
-
-#dice img {
-    width: 70px;
-    margin: 2px;
-}
-
-@media only screen and (max-device-width: 335px) {
-    #dice img {
-        width: 52px;
-    }
-}
-
-#bet-ui {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-#bet-ui button {
-    min-width: 110px;
-    font-size: 20px;
-    margin: 4px;
-}
-
-#bet {
-    display: block;
-    width: 100%;
-    height: 62.5px;
-    margin: 0 0 20px;
-    font-size: 50px;
-    text-align: center;
-}
-
-#bet.call {
-    color: green;
-}
-
-#bet.fold {
-    color: red;
-}
-
-#fold-button {
-    background-color: #f66;
-}
-
-#fold-button:hover, #fold-button:active {
-    background-color: #f88;
-}
-
-#raise-button {
+#ready.ready {
     background-color: #6e6;
 }
 
-#raise-button:hover, #raise-button:active {
-    background-color: #8f8;
+#hand {
+    margin: 40px 0;
+}
+
+#hand button {
+    width: 120px;
+    height: 120px;
+    max-width: 32%;
+    min-width: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#hand .selected {
+    background-color: #6e6;
+}
+
+#rock {
+    background-image: url("../svg/rock.svg");
+}
+
+#paper {
+    background-image: url("../svg/paper.svg");
+}
+
+#scissors {
+    background-image: url("../svg/scissors.svg");
 }

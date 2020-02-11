@@ -5,30 +5,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>Poker dice</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
     <div id="game-ui">
-        <div id="game-bet-ui">
+        <div id="game-panel">
             <div id="room-panel" class="panel">
-                <h1>Poker dice</h1>
+                <h1>Rock Paper Scissors</h1>
                 <p id="room">0000</p>
             </div>
 
             <div class="panel">
-                <h2>Current bet</h2>
-                <p id="current-bet"></p>
-            </div>
-
-            <div class="panel">
-                <h2>Winner</h2>
-                <p id="name"></p>
-                <div id="dice">
-                    <img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg"><img src="svg/nodice.svg">
-                </div>
+                <h2>Results</h2>
+                <table id="results">
+                    <tr><td>Rock:</td><td id="rock-value"></td></tr>
+                    <tr><td>Paper:</td><td id="paper-value"></td></tr>
+                    <tr><td>Scissors:</td><td id="scissors-value"></td></tr>
+                </table>
             </div>
         </div>
 
