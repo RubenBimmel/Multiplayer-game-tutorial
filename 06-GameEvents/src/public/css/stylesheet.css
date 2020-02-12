@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+/*
+ * Global
+ */
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #eee;
+}
+
+.center-div {
+    padding: 1px 12px 20px;
+    margin: 0 auto;
+    max-width: 370px;
+    left: 0;
+    right: 0;
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: outset;
+    padding: 5px;
+    background-color: #eee;
+    min-width: 120px;
+}
+
+button:hover, button:active {
+    background-color: #f5f5f5;
+}
+
+button:active {
+    border-width: 1.5px;
+}
+
+button:focus {
+    outline: none;
+}
+
+/*
+ * Index
+ */
+
+.form-table {
+    margin-bottom: 10px;
+    width: 90%;
+}
+
+.form-table td {
+    padding: 5px;
+}
+
+.form-table td:first-child {
+    width: 20%;
+}
+
+.form-table td:last-child {
+    width: 80%;
+}
+
+.form-table input {
+    width: 100%;
+}
+
+/*
+ * Game
+ */
+
+#game-ui {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+#game-panel {
+    flex: 0 0 300px;
+    margin: 20px;
+}
+
+#game-panel h1 {
+    text-align: center;
+    margin: 0;
+}
+
+#game-panel #room {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    margin: 5px 0;
+}
+
+#game-panel p {
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+#game-panel .panel {
+    margin: 0 0 20px;
+}
+
+#results {
+    font-size: 1.4em;
+    width: 60%;
+}
+
+#player-panel {
+    display: flex;
+    flex-grow: 1;
+    margin: 20px;
+    margin-left: 0;
+}
+
+.player {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url("../svg/rock.svg");
+    opacity: .4;
+}
+
+.player.active {
+    opacity: 1;
+}
+
+.player.paper {
+    background-image: url("../svg/paper.svg");
+}
+
+.player.scissors {
+    background-image: url("../svg/scissors.svg");
+}
+
+.player h2 {
+    position: absolute;
+    width: 100%;
+    bottom: -20px;
+    text-align: center;
+}
+
+/*
+ * Controller
+ */
+
+.panel {
+    background-color: white;
+    margin: -10px -10px 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.panel H2 {
+    margin-top: 0;
+}
+
+#game-panel {
+    position: relative;
+    min-height: 260px;
+}
+
+#ready {
+    width: 95%;
+    position: absolute;
+    bottom: 10px;
+}
+
+#ready.ready {
+    background-color: #6e6;
+}
+
+#hand {
+    margin: 40px 0;
+}
+
+#hand button {
+    width: 120px;
+    height: 120px;
+    max-width: 32%;
+    min-width: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#hand .selected {
+    background-color: #6e6;
+}
+
+#rock {
+    background-image: url("../svg/rock.svg");
+}
+
+#paper {
+    background-image: url("../svg/paper.svg");
+}
+
+#scissors {
+    background-image: url("../svg/scissors.svg");
+}

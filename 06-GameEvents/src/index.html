@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="center-div">
+        <h1>Rock Paper Scissors</h1>
+        <div class="panel">
+            <h2>Join game</h2>
+            <table class="form-table">
+            <tr><td>Name:</td><td><input id="name" type="text"></td></tr>
+            <tr><td>Room:</td><td><input id="room" type="text"></td></tr>
+            </table>
+            <button id="join">Join</button>
+        </div>
+        <div class="panel">
+            <h2>Host game</h2>
+            <button onclick="location.href += 'game'">Host</button>
+        </div>
+    </div>
+
+    <script src="js/homepage.js"></script>
+</body>
+
+</html>
