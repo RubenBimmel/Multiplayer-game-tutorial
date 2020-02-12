@@ -34,9 +34,22 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
+  socket.on('checkRoom', function(id) {
+    socket.emit('roomExists', gamemanager.roomExists(id));
+  });
+
   socket.on('host', function() {
-    var game = gamemanager.createRoom(socket.id);
+    var game = gamemanager.createRoom();
     game.addHost(socket);
+    game.room = io.to(game.id);
     socket.on('disconnect', () => gamemanager.removeRoom(game.id));
+  });
+
+  socket.on('join', function(data) {
+    if (gamemanager.roomExists(data.room)) {
+      gamemanager.joinRoom(data.room, socket, data.name);
+    } else {
+      socket.emit('joinFailed');
+    }
   });
 });

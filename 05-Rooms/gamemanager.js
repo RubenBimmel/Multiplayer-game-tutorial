@@ -7,6 +7,7 @@ class Game {
     addHost(socket) {
         this.host = socket.id;
         socket.emit('room', this.id);
+        socket.join(this.id);
     }
 
     addPlayer(socket, name) {
@@ -14,6 +15,7 @@ class Game {
             id: socket.id,
             name: name
         })
+        socket.join(this.id);
     }
 }
 
@@ -33,7 +35,17 @@ function removeRoom(id) {
     delete games[id];
 }
 
+function roomExists(id) {
+    return games[id] != undefined;
+}
+
+function joinRoom(room, socket, name) {
+    games[room].addPlayer(socket, name);
+}
+
 module.exports = {
     createRoom: createRoom,
-    removeRoom: removeRoom
+    removeRoom: removeRoom,
+    roomExists: roomExists,
+    joinRoom: joinRoom
 }
