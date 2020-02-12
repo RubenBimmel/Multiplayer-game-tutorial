@@ -4,6 +4,9 @@ const express = require('express');
 const app = express();
 const server = http.createServer(app);
 
+var io = require('socket.io').listen(server);
+var gamemanager = require('./gamemanager.js');
+
 const port = 3000;
 
 server.listen(port, function(){
@@ -24,8 +27,6 @@ app.get('/controller', function (req, res) {
 
 app.use(express.static('src/public'));
 
-var io = require('socket.io').listen(server);
-
 io.on('connection', function(socket){
   console.log('a user connected');
 
@@ -33,7 +34,9 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
-  socket.on('mark', function(position) {
-    console.log(position);
+  socket.on('host', function() {
+    var game = gamemanager.createRoom(socket.id);
+    socket.emit('room', game.id);
+    socket.on('disconnect', () => gamemanager.removeGame(game.id));
   });
 });

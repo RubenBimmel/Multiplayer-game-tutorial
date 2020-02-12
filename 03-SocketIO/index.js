@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const server = http.createServer(app);
 
+var io = require('socket.io').listen(server);
+
 const port = 3000;
 
 server.listen(port, function(){
@@ -24,8 +26,6 @@ app.get('/controller', function (req, res) {
 
 app.use(express.static('src/public'));
 
-var io = require('socket.io').listen(server);
-
 io.on('connection', function(socket){
   console.log('a user connected');
 
@@ -33,7 +33,7 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
 
-  socket.on('hand', function(hand) {
-    console.log(hand);
+  socket.on('host', function() {
+    socket.emit('room', "1234");
   });
 });
