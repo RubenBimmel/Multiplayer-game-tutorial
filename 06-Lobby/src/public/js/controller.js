@@ -10,7 +10,7 @@ var gameUI = document.getElementById('state');
 
 readyButton.onclick = function() {
     ready = !ready;
-    readyButton.classList = ready ? 'ready' : '';
+    readyButton.classList.toggle('ready', ready);
     socket.emit('ready', ready);
 }
 

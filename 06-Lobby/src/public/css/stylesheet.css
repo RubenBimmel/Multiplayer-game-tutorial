@@ -143,6 +143,14 @@ button:focus {
     background-image: url("../svg/scissors.svg");
 }
 
+.player.lost {
+    background-image: url("../svg/cross.svg");
+}
+
+.player.winner {
+    filter: contrast(0.1) sepia(3) saturate(6) hue-rotate(23deg);
+}
+
 .player h2 {
     position: absolute;
     width: 100%;
@@ -202,7 +210,7 @@ button:focus {
     background-position: center;
 }
 
-#hand .selected {
+.betting .rock #rock, .betting .paper #paper, .betting .scissors #scissors {
     background-color: #6e6;
 }
 

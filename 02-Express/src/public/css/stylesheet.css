@@ -80,17 +80,17 @@ button:focus {
     display: flex;
 }
 
-#game-panel {
+#game-ui-panel {
     flex: 0 0 300px;
     margin: 20px;
 }
 
-#game-panel h1 {
+#game-ui-panel h1 {
     text-align: center;
     margin: 0;
 }
 
-#game-panel #room {
+#game-ui-panel #room {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
@@ -98,13 +98,17 @@ button:focus {
     margin: 5px 0;
 }
 
-#game-panel p {
+#game-ui-panel p {
     font-size: 25px;
     margin: 10px 0;
 }
 
-#game-panel .panel {
+#game-ui-panel .panel {
     margin: 0 0 20px;
+}
+
+.lobby #results-panel {
+    display: none;
 }
 
 #results {
@@ -139,6 +143,14 @@ button:focus {
     background-image: url("../svg/scissors.svg");
 }
 
+.player.lost {
+    background-image: url("../svg/cross.svg");
+}
+
+.player.winner {
+    filter: contrast(0.1) sepia(3) saturate(6) hue-rotate(23deg);
+}
+
 .player h2 {
     position: absolute;
     width: 100%;
@@ -167,6 +179,7 @@ button:focus {
 }
 
 #ready {
+    display: none;
     width: 95%;
     position: absolute;
     bottom: 10px;
@@ -176,8 +189,16 @@ button:focus {
     background-color: #6e6;
 }
 
+.lobby #ready {
+    display: block;
+}
+
 #hand {
     margin: 40px 0;
+}
+
+.lobby #hand {
+    display: none;
 }
 
 #hand button {
@@ -189,7 +210,7 @@ button:focus {
     background-position: center;
 }
 
-#hand .selected {
+.betting .rock #rock, .betting .paper #paper, .betting .scissors #scissors {
     background-color: #6e6;
 }
 
