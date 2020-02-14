@@ -8,7 +8,6 @@
     <title>Rock Paper Scissors - Controller</title>
     <link rel="stylesheet" href="css/stylesheet.css">
     <script src="/socket.io/socket.io.js"></script>
-    <script src="js/controller.js"></script>
 </head>
 
 <body>
@@ -16,15 +15,19 @@
         <h1>Rock Paper Scissors</h1>
         <h2 id="player-name">Player name</h2>
 
-        <div id="game-panel" class="panel">
-            <div id="hand">
-                <button id="rock"></button>
-                <button id="paper"></button>
-                <button id="scissors"></button>
-            </div>
+        <div id="state" class="lobby">
+            <div id="game-panel" class="panel">
+                <div id="hand">
+                    <button id="rock"></button>
+                    <button id="paper"></button>
+                    <button id="scissors"></button>
+                </div>
 
-            <button id="ready">Ready</button>
+                <button id="ready">Ready</button>
+            </div>
         </div>
     </div>
+
+    <script src="js/controller.js"></script>
 </body>
 </html>

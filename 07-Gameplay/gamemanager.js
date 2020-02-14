@@ -2,6 +2,7 @@ class Game {
     constructor(id) {
         this.id = id;
         this.players = [];
+        this.state = "lobby";
     }
 
     addHost(socket) {
@@ -17,6 +18,22 @@ class Game {
         };
         this.players.push (player);
         socket.join(this.id);
+        this.room.to(this.host).emit('addPlayer', player);
+
+        socket.on('ready', (ready) => {
+            player.ready = ready;
+            this.room.to(this.host).emit('ready', player);
+
+            if (this.players.length >= 2) {
+                var unready = this.players.find(p => !p.ready);
+                if (!unready) this.setState("betting");
+            }
+        });
+    }
+
+    setState(state) {
+        this.state = state;
+        this.room.emit('state', this.state);
     }
 }
 

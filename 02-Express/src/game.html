@@ -10,27 +10,29 @@
 </head>
 
 <body>
-    <div id="game-ui">
-        <div id="game-panel">
-            <div id="room-panel" class="panel">
-                <h1>Rock Paper Scissors</h1>
-                <p id="room">0000</p>
+    <div id="state" class="lobby">
+        <div id="game-ui">
+            <div id="game-ui-panel">
+                <div id="room-panel" class="panel">
+                    <h1>Rock Paper Scissors</h1>
+                    <p id="room">0000</p>
+                </div>
+
+                <div id="results-panel" class="panel">
+                    <h2>Results</h2>
+                    <table id="results">
+                        <tr><td>Rock:</td><td id="rock-value"></td></tr>
+                        <tr><td>Paper:</td><td id="paper-value"></td></tr>
+                        <tr><td>Scissors:</td><td id="scissors-value"></td></tr>
+                    </table>
+                </div>
             </div>
 
-            <div class="panel">
-                <h2>Results</h2>
-                <table id="results">
-                    <tr><td>Rock:</td><td id="rock-value"></td></tr>
-                    <tr><td>Paper:</td><td id="paper-value"></td></tr>
-                    <tr><td>Scissors:</td><td id="scissors-value"></td></tr>
-                </table>
+            <div id="player-panel" class="panel">
+                <div id="players">
+                </div>
             </div>
         </div>
-
-        <div id="player-panel" class="panel">
-            <div id="players">
-            </div>
-        </div>
-    </div>    
+    </div>
 </body>
 </html>

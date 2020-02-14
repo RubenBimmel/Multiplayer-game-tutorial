@@ -10,10 +10,11 @@ class Game {
     }
 
     addPlayer(socket, name) {
-        this.players.push ({
+        var player = {
             id: socket.id,
             name: name
-        })
+        };
+        this.players.push (player);
     }
 }
 

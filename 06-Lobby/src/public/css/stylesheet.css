@@ -80,17 +80,17 @@ button:focus {
     display: flex;
 }
 
-#game-panel {
+#game-ui-panel {
     flex: 0 0 300px;
     margin: 20px;
 }
 
-#game-panel h1 {
+#game-ui-panel h1 {
     text-align: center;
     margin: 0;
 }
 
-#game-panel #room {
+#game-ui-panel #room {
     text-align: center;
     font-size: 60px;
     font-weight: bold;
@@ -98,13 +98,17 @@ button:focus {
     margin: 5px 0;
 }
 
-#game-panel p {
+#game-ui-panel p {
     font-size: 25px;
     margin: 10px 0;
 }
 
-#game-panel .panel {
+#game-ui-panel .panel {
     margin: 0 0 20px;
+}
+
+.lobby #results-panel {
+    display: none;
 }
 
 #results {
@@ -167,6 +171,7 @@ button:focus {
 }
 
 #ready {
+    display: none;
     width: 95%;
     position: absolute;
     bottom: 10px;
@@ -176,8 +181,16 @@ button:focus {
     background-color: #6e6;
 }
 
+.lobby #ready {
+    display: block;
+}
+
 #hand {
     margin: 40px 0;
+}
+
+.lobby #hand {
+    display: none;
 }
 
 #hand button {
