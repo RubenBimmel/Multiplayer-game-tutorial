@@ -1,6 +1,6 @@
 var socket = io();
 
-var playerPanel = document.getElementById("players");
+var playerPanel = document.getElementById("player-panel");
 var players = {};
 
 var gameUI = document.getElementById("state");
